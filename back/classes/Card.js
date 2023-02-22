@@ -4,10 +4,11 @@ import {
   distanceCards,
   malusCards,
   specialCards,
-} from './cardsAssets';
+} from './cardsAssets.js';
 
 export class Card {
-  constructor(name, description, type, number, img) {
+  constructor(id, name, description, type, number, img) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.type = type;
@@ -56,6 +57,7 @@ export const createCards = () => {
   distanceCards.forEach((card) => {
     for (let i = 1; i <= card.number; i++) {
       let newCard = new DistanceCard(
+        card.id,
         card.name,
         card.description,
         card.number,
@@ -70,6 +72,7 @@ export const createCards = () => {
   specialCards.forEach((card) => {
     for (let i = 1; i <= card.number; i++) {
       let newCard = new SpecialCard(
+        card.id,
         card.name,
         card.description,
         card.number,
@@ -83,6 +86,7 @@ export const createCards = () => {
   bonusCards.forEach((card) => {
     for (let i = 1; i <= card.number; i++) {
       let newCard = new BonusCard(
+        card.id,
         card.name,
         card.description,
         card.number,
@@ -96,6 +100,7 @@ export const createCards = () => {
   malusCards.forEach((card) => {
     for (let i = 1; i <= card.number; i++) {
       let newCard = new MalusCard(
+        card.id,
         card.name,
         card.description,
         card.number,
@@ -106,20 +111,22 @@ export const createCards = () => {
     }
   });
   //create character cards
-  characterCards.forEach((card) => {
-    for (let i = 1; i <= card.number; i++) {
-      let newCard = new CharacterCard(
-        card.name,
-        card.description,
-        card.number,
-        card.type,
-        card.img
-      );
-      cardList.push(newCard);
-    }
-  });
+  // characterCards.forEach((card) => {
+  //   for (let i = 1; i <= card.number; i++) {
+  //     let newCard = new CharacterCard(
+  //       card.id,
+  //       card.name,
+  //       card.description,
+  //       card.number,
+  //       card.type,
+  //       card.img
+  //     );
+  //     cardList.push(newCard);
+  //   }
+  // });
   cardList = shuffleArray(cardList);
   console.log('cardList', cardList.length);
+
   return cardList;
 };
 
