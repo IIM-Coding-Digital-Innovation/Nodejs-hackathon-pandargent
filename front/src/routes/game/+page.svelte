@@ -53,6 +53,16 @@
         socket.on('disconnect', () => {
             console.log('disconnected');
         });
+        socket.on('get_playCard', ({nPlayer, card}) => {
+            console.log(`${nPlayer} get ${card.name}`);
+            if(card.type == "Spéciale") nPlayer.specialCards.push(card)
+             else if (card.type == "Bonus" || card.type == "Malus"){
+                 nPlayer.state = card
+            }
+            else if(card.type == "Distance"){
+                nPlayer.distanceCard = card
+            }
+        });
     });
 
     onDestroy(() => {
@@ -83,23 +93,23 @@
     </section>
     <section class="top-player">
         <Hand isPlayer={false} cards={playersWithoutMe[0]?.hand} />
-        <PlayerBoard />
+        <PlayerBoard specialCard={playersWithoutMe[0]?.specialCards} stateCard={playersWithoutMe[0]?.state} milesCard={playersWithoutMe[0]?.distanceCard}/>
     </section>
     <section></section>
     <section class="left-player">
-        <PlayerBoard />
+        <PlayerBoard specialCard={playersWithoutMe[1]?.specialCards} stateCard={playersWithoutMe[1]?.state} milesCard={playersWithoutMe[1]?.distanceCard}/>
         <Hand isPlayer={false} cards={playersWithoutMe[1]?.hand}/>
     </section>
     <section class="deck-area">
         <Deck drawCard= {onDrawCard} />
     </section>
     <section class="right-player">
-        <PlayerBoard />
+        <PlayerBoard specialCard={playersWithoutMe[2]?.specialCards}  stateCard={playersWithoutMe[2]?.state} milesCard={playersWithoutMe[2]?.distanceCard}/>
         <Hand isPlayer={false} cards={playersWithoutMe[2]?.hand}/>
     </section>
     <section></section>
     <section class="active-player">
-        <PlayerBoard />
+        <PlayerBoard specialCard={me?.specialCards} stateCard={me?.state} milesCard={me?.distanceCard}/>
         <Hand playCard={onPlayCard} isPlayer={true} cards={me?.hand} />
     </section>
 </div>
