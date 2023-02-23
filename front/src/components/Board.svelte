@@ -1,5 +1,5 @@
 <script>
-    import bg_board from "../lib/bg_board.jpg";
+    import bg_board from "../lib/images/bg_board.jpg";
 </script>
 <section>
     <div class="background">
