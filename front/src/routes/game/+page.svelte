@@ -56,7 +56,11 @@
         socket.emit('send_pickCard', {nPlayer});
         console.log(`${nPlayer} picked one card`);
     };
-    //todo ajouter la carte a la hand du joueur
+
+    const onPlayCard = (i) => {
+        console.log(i);
+    }
+
 </script>
 
 <svelte:head>
@@ -87,7 +91,7 @@
     <section></section>
     <section class="active-player">
         <PlayerBoard />
-        <Hand isPlayer={true} cards={me?.hand} />
+        <Hand playCard={onPlayCard} isPlayer={true} cards={me?.hand} />
     </section>
 </div>
 

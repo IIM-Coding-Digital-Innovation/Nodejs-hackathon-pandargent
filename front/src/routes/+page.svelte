@@ -9,22 +9,22 @@
 </svelte:head>
 
 <section>
-		<div class="box">
-			<form action="/room" method="get">
-				<img class="logo" src="{logo}" alt="">
-				<div class="form">
-					<picture class="profilpicture">
-						<img src="{profil_picture}" alt="Profil_Picture">
-					</picture>
-					<input type="text" name="name" id="" placeholder="Entrez votre pseudo *" required>
-				</div>
-				<div class="password">
-					<input type="password" name="password" placeholder="Entrez votre mot de passe *" required>
-				</div>
-				<br>
-				<button class="play">Jouer</button>
-			</form>
-		</div>
+	<div class="box">
+		<form action="/room" method="get">
+			<img class="logo" src="{logo}" alt="">
+			<div class="form">
+				<picture class="profilpicture">
+					<img src="{profil_picture}" alt="Profil_Picture">
+				</picture>
+				<input type="text" name="name" id="" placeholder="Entrez votre pseudo *" required>
+			</div>
+			<div class="password">
+				<input type="password" name="password" placeholder="Entrez votre mot de passe *" required>
+			</div>
+			<br>
+			<button class="play">Jouer</button>
+		</form>
+	</div>
 </section>
 
 <style>

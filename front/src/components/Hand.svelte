@@ -3,15 +3,16 @@
     import img from "../lib/cards/characters/img_harry_potter.jpg";
 
     export let isPlayer;
-    export let cards
-
+    export let cards;
+    export let playCard;
+    
 </script>
 
 <ul class="cards">
     {#if cards && Array.isArray(cards)}
-        {#each cards as card}
+        {#each cards as card, i}
             {#if isPlayer === true}
-                <li class="card">
+                <li on:click={() => playCard(i)} class="card">
                     <div class="card__img">
                         <img src="{img}" alt="image of {card.name}">
                     </div>
