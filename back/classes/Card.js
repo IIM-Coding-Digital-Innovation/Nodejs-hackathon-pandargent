@@ -74,8 +74,8 @@ export const createCards = () => {
         ids,
         card.name,
         card.description,
-        card.number,
         card.type,
+        card.number,
         card.img,
         card.distance
       );
@@ -90,8 +90,8 @@ export const createCards = () => {
         ids,
         card.name,
         card.description,
-        card.number,
         card.type,
+        card.number,
         card.img
       );
       ids++;
@@ -105,8 +105,8 @@ export const createCards = () => {
         ids,
         card.name,
         card.description,
-        card.number,
         card.type,
+        card.number,
         card.img
       );
       ids++;
@@ -120,8 +120,8 @@ export const createCards = () => {
         ids,
         card.name,
         card.description,
-        card.number,
         card.type,
+        card.number,
         card.img
       );
       ids++;

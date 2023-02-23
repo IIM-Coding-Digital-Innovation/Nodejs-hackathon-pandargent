@@ -1,7 +1,7 @@
 <div class="player-board">
-    <div class="player-board__bonus"></div>
-    <div class="player-board__miles"></div>
-    <div class="player-board__special"></div>
+    <div id="bonus-card-position" class="player-board__bonus"></div>
+    <div id="miles-card-position" class="player-board__miles"></div>
+    <div id="special-card-position" class="player-board__special"></div>
 </div>
 
 <style>

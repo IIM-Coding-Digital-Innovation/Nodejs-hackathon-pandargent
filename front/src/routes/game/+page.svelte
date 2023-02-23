@@ -65,6 +65,11 @@
             console.log(`${nPlayer} picked one card`);
         }
     };
+
+    const onPlayCard = (i) => {
+        console.log(i);
+    }
+
 </script>
 
 <svelte:head>
@@ -95,7 +100,7 @@
     <section></section>
     <section class="active-player">
         <PlayerBoard />
-        <Hand isPlayer={true} cards={me?.hand} />
+        <Hand playCard={onPlayCard} isPlayer={true} cards={me?.hand} />
     </section>
 </div>
 
