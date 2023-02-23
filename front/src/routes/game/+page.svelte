@@ -6,6 +6,7 @@
     import PlayerBoard from "../../components/PlayerBoard.svelte";
     import Deck from "../../components/Deck.svelte";
     import {blockActions} from "../../utils/blockActions.js";
+    import {canPutCard} from "../../utils/canPutCard.js";
 
     const socket = io('http://localhost:9999');
 
@@ -66,7 +67,10 @@
     });
 
     onDestroy(() => {
-        socket.disconnect();
+        socket.off('get_playerInfo');
+        socket.off('get_pickCard');
+        socket.off('get_newCard');
+        socket.off('get_nextPlayer');
     });
 
     const onDrawCard = () => {
@@ -76,8 +80,13 @@
         }
     };
 
-    const onPlayCard = (i) => {
-        console.log(i);
+    const playCard = (target,card) => {
+        let nPlayer2 = players.findIndex((player) => player.pseudo === target.pseudo)
+        socket.emit('send_playCard', {
+            nPlayer: nPlayer,
+            nPlayer2: nPlayer2,
+            card: card
+        });
     }
 
 </script>
@@ -110,7 +119,7 @@
     <section></section>
     <section class="active-player">
         <PlayerBoard specialCard={me?.specialCards} stateCard={me?.state} milesCard={me?.distanceCard}/>
-        <Hand playCard={onPlayCard} isPlayer={true} cards={me?.hand} />
+        <Hand isPlayer={true} cards={me?.hand} me={me} players={playersWithoutMe} playCard={playCard}/>
     </section>
 </div>
 
