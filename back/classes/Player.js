@@ -19,36 +19,14 @@ export class Player {
     this.img = img;
     this.color = color;
     this.hand = [];
-    this.state = {
-      id: 9,
-      name: 'Vulnera Sanentur',
-      description: '',
-      type: CardType.BON,
-      number: 6,
-      img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-7.png?alt=media&token=4b78aec1-06e9-4c7e-b97f-689a310abac2',
-    };
-    this.specialCards = [{
-      id: 5,
-      name: 'Voiture volante',
-      description: '',
-      type: CardType.SPEC,
-      number: 1,
-      img:'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Voiture%20volante.png?alt=media&token=cef0925c-afa8-4dfe-906b-0417503fd9b6'
-    }];
-    this.distanceCard={
-      id: 1,
-      name: "Flèche d'argent",
-      description: '',
-      type: CardType.DIST,
-      distance: 50,
-      number: 10,
-      img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/fleche.png?alt=media&token=d31dc6d0-1853-4311-ba2d-750f7aae6aea',
-    }
+    this.state = '';
+    this.specialCards = [];
+    this.distanceCard='';
     this.me = false;
   }
   //jouer une carte
   playCard = (card, player) => {
-    console.log('card.name', card.distance);
+    console.log('card', card);
     //attriuer le bon effet de la carte
     switch (card.type) {
       case CardType.SPEC:
