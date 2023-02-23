@@ -3,71 +3,30 @@
     import img from "../lib/cards/characters/img_harry_potter.jpg";
 
     export let isPlayer;
+    export let cards
 
-    let cardsInHand = [
-		{   name: 'Bombe bleue',
-            description: 'Avance de 25 km',
-            distance: 25,
-            number: 10,
-            type: "special",
-            img: '' 
-        },
-        {   name: 'Cape d\'invisibilité',
-            description: '',
-            distance: 25,
-            number: 10,
-            type: 'malus',
-            img: '' 
-        },
-        {   name: 'Bombe bleue',
-            description: '',
-            distance: 25,
-            number: 10,
-            type: 'bonus',
-            img: '' 
-        },
-        {   name: 'Bombe bleue',
-            description: '',
-            distance: 25,
-            number: 10,
-            type: 'miles',
-            img: '' 
-        },
-        {   name: 'Bombe bleue',
-            description: '',
-            distance: 25,
-            number: 10,
-            img: '' 
-        },
-        {   name: 'Bombe bleue',
-            description: '',
-            distance: 25,
-            number: 10,
-            img: '' 
-        }
-	];
-
-    
 </script>
 
 <ul class="cards">
-    {#each cardsInHand as card}
-        {#if isPlayer === true}
-            <li class="card">
-                <div class="card__img">
-                    <img src="{img}" alt="image of {card.name}">
-                </div>
-                <h2 class="card__title">{card.name}</h2>
-                <p class="card__description">{card.description}</p>
-            </li>
-        {:else}
-            <li class="card--bg">
-                <div class="card__img">
-                    <img src="{back_card}" alt="back of the card">
-                </div>
-            </li>
-        {/if}
-    {/each}
+    {#if cards && Array.isArray(cards)}
+        {#each cards as card}
+            {#if isPlayer === true}
+                <li class="card">
+                    <div class="card__img">
+                        <img src="{img}" alt="image of {card.name}">
+                    </div>
+                    <h2 class="card__title">{card.name}</h2>
+                    <p class="card__description">{card.description}</p>
+                </li>
+            {:else}
+                <li class="card--bg">
+                    <div class="card__img">
+                        <img src="{back_card}" alt="back of the card">
+                    </div>
+                </li>
+            {/if}
+        {/each}
+    {/if}
 </ul>
 
 
@@ -82,6 +41,11 @@
         background-color: rgb(231, 217, 22);
         border: solid 1px black;
         cursor: pointer;
+        transition: all 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-85px) scale(1.5);
+        transition: all 0.3s;
     }
     .card--bg {
         width: 88px;

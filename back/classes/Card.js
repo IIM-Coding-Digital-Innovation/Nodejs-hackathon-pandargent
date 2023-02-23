@@ -144,7 +144,6 @@ export const createCards = () => {
   //   }
   // });
   cardList = shuffleArray(cardList);
-  console.log('cardList', cardList.length);
 
   return cardList;
 };

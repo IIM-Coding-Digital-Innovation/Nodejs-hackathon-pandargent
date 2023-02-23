@@ -67,7 +67,7 @@ export const specialCards = [
     description: '',
     type: CardType.SPEC,
     number: 1,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Baguette%20de%20sureau.png?alt=media&token=cc0449ae-da4b-4d99-8930-35eb8d085d8a',
   },
   {
     id: 7,
@@ -75,7 +75,7 @@ export const specialCards = [
     description: '',
     type: CardType.SPEC,
     number: 1,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Cape%20invisible.png?alt=media&token=22684af5-7bea-4a43-b95c-0ddd33a909f6',
   },
   {
     id: 8,
@@ -101,7 +101,7 @@ export const bonusCards = [
     description: '',
     type: CardType.BON,
     number: 6,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-1.png?alt=media&token=68578bca-fd80-4abd-8e88-1c88fa66bd40',
   },
   {
     id: 11,
@@ -332,15 +332,15 @@ export const allCards = [
     description: '',
     type: CardType.BON,
     number: 6,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-1.png?alt=media&token=68578bca-fd80-4abd-8e88-1c88fa66bd40',
   },
   {
     id: 11,
-    name: 'Balais',
+    name: 'Reparo',
     description: '',
     type: CardType.BON,
     number: 6,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-4.png?alt=media&token=33ef0c6f-339b-47b1-928f-3941e4d5bea5',
   },
   {
     id: 12,
@@ -381,7 +381,7 @@ export const allCards = [
     description: '',
     type: CardType.MAL,
     number: 3,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-2.png?alt=media&token=7de6063a-6a1f-4802-887e-39ef91bd5da3',
   },
   {
     id: 17,
@@ -397,7 +397,7 @@ export const allCards = [
     description: '',
     type: CardType.MAL,
     number: 4,
-    img: '',
+    img: 'https://firebasestorage.googleapis.com/v0/b/hp-borne.appspot.com/o/Expelliarmus-3.png?alt=media&token=1f3bec82-26d8-4164-bfd6-543f28907dae',
   },
   //Personnage
   {

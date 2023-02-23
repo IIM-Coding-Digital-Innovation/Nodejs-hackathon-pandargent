@@ -1,6 +1,7 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
 import {createGame} from "./utils/createGame.js";
+import {Card} from "./classes/Card.js";
 
 const httpServer = createServer();
 const io = new Server(httpServer, {
@@ -25,13 +26,27 @@ io.on("connection", (socket) => {
         }
 
         const socketsInRoom = io.sockets.adapter.rooms.get(room);
-        if(socketsInRoom.size === 4) {
+        if(socketsInRoom.size === 1) {
             Array.from(socketsInRoom).forEach((socketId) => {
                 const socketIndex = Array.from(socketsInRoom).indexOf(socketId);
                 //Send player info to each player
-                let newPlayer = JSON.parse(JSON.stringify(jsonGame.players[socketIndex]));
-                newPlayer.me = true;
-                io.to(socketId).emit("get_playerInfo", newPlayer);
+                let newPlayers = JSON.parse(JSON.stringify(jsonGame.players));
+                newPlayers[socketIndex].me = true
+
+                let fakeCard = [];
+                for (let i = 0; i < 6; i++) {
+                    fakeCard.push(new Card(0, "fake", "", "fake", 0, "", 0))
+                }
+
+                newPlayers.map((player, index) => {
+                    if(index !== socketIndex) {
+                        player.hand = [...fakeCard];
+                    } else {
+                        player.me = true;
+                    }
+                });
+
+                io.to(socketId).emit("get_playerInfo", newPlayers);
             });
         }
     });
@@ -61,20 +76,22 @@ io.on("connection", (socket) => {
      * @param {*} data
      */
     const sendTo = (name, nPlayer, data) => {
-        const socketId = io.sockets.adapter.rooms.get(socket.data.room)[nPlayer - 1];
-        socket.to(socketId).emit(name, data);
+        const socketId = Array.from(io.sockets.adapter.rooms.get(socket.data.room))[nPlayer - 1];
+        io.to(socketId).emit(name, data);
     }
 
-    socket.on("send_pickCard", ({nPlayer,name}) => {
+    socket.on("send_pickCard", ({nPlayer}) => {
+        console.log(nPlayer)
         const newCard = jsonGame.drawOneCard(nPlayer - 1);
 
+        // Check if deck is empty
         jsonGame.defausseToDeck();
 
         sendAllExceptSender("get_pickCard", {
             action: "pickCard",
-            nPlayer: nPlayer,
+            nPlayer: nPlayer
         });
-        sendTo("get_pickCard", nPlayer, newCard);
+        sendTo("get_newCard", nPlayer, newCard);
     });
 
     socket.on("send_playCard", ({nPlayer,nPlayer2,card}) => {
