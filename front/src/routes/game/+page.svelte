@@ -5,6 +5,7 @@
     import Hand from "../../components/Hand.svelte";
     import PlayerBoard from "../../components/PlayerBoard.svelte";
     import Deck from "../../components/Deck.svelte";
+	import PlayerInfo from '../../components/PlayerInfo.svelte';
 
     const socket = io('http://localhost:9999');
 
@@ -70,24 +71,34 @@
     </section>
     <section class="top-player">
         <Hand isPlayer={false} cards={playersWithoutMe[0]?.hand} />
+        <PlayerInfo player={playersWithoutMe[0]}/>
         <PlayerBoard />
     </section>
     <section></section>
     <section class="left-player">
         <PlayerBoard />
         <Hand isPlayer={false} cards={playersWithoutMe[1]?.hand}/>
+        <PlayerInfo player={playersWithoutMe[1]}/>
+
     </section>
     <section class="deck-area">
         <Deck drawCard= {onDrawCard} />
     </section>
     <section class="right-player">
         <PlayerBoard />
-        <Hand isPlayer={false} cards={playersWithoutMe[2]?.hand}/>
+        <div >
+            <Hand isPlayer={false} cards={playersWithoutMe[2]?.hand}/>
+            <PlayerInfo player={playersWithoutMe[2]}/>
+        </div>
+
     </section>
     <section></section>
     <section class="active-player">
         <PlayerBoard />
+        <div class="playerInfo">
         <Hand isPlayer={true} cards={me?.hand} />
+        <PlayerInfo player={me}/>
+        </div>
     </section>
 </div>
 
@@ -143,5 +154,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .playerInfo{
+        display:flex;
+        flex-direction: row;
+        
+    }
+    .playerInfoRight{
+        display: flex;
+        flex-direction: row;
     }
 </style>

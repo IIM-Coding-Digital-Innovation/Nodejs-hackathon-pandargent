@@ -37,7 +37,7 @@
         width: 88px;
         padding: 2px;
         border-radius: 8px;
-        background-color:#C3B189;
+        background-color:transparent;
         cursor: pointer;
         transition: all 0.3s;
     }
